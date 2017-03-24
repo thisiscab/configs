@@ -1,0 +1,60 @@
+# ############################## #
+#       Generic Aliases
+# ############################## #
+
+# `pping` with no arguments ping the IP 8.8.8.8 (usefull for basic internet connection test), 
+# otherwise ping the given IP. If the IP is incomplete, it is concat with the default 
+# prefix 192.168.1 allowing easy local ping (eg ping 3.12 => 192.168.3.12)
+function pping() {
+        ip4regex='^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$'
+        ip3regex='^[0-9]+[.][0-9]+[.][0-9]+$'
+        ip2regex='^[0-9]+[.][0-9]+$'
+        ip1regex='^[0-9]+$'
+        host=$@
+        if [ $# -eq 0 ]; then
+                host="8.8.8.8"
+        elif [[ $@ =~ $ip4regex ]]; then
+                host="$@"
+        elif [[ $@ =~ $ip3regex ]]; then
+                host="192.$@"
+        elif [[ $@ =~ $ip2regex ]]; then
+                host="192.168.$@"
+        elif [[ $@ =~ $ip1regex ]]; then
+                host="192.168.1.$@"
+        fi
+        ping $host
+}
+
+# ############################## #
+#       MacOS Aliases
+# ############################## #
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    function o() {
+        if [ $# -eq 0 ]; then
+            open .
+        else
+            open "$@"
+        fi
+    }
+
+    function t() {
+        if [ $# -eq 2 ]; then
+            livestreamer twitch.tv/"$1" $2
+        elif [ $# -eq 1 ]; then
+            livestreamer twitch.tv/"$1" best
+        else
+            echo "USAGE: twitch twitch_id [quality]"
+        fi
+    }
+
+    function hit() {
+        if [ $# -eq 2 ]; then
+            livestreamer hitbox.tv/"$1" $2
+        elif [ $# -eq 1 ]; then
+            livestreamer hitbox.tv/"$1" best
+        else
+            echo "USAGE: hit twitch_id [quality]"
+        fi
+    }
+fi

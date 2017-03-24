@@ -1,0 +1,62 @@
+quit
+add ~/Music/crypt.mp3
+add ~/Music/talos_principle.mp3
+add ~/Music/perfect_dark.mp3
+add ~/Music/elder_scrolls.mp3
+add ~/Music/doom.mp3
+add ~/Music/Goldeneye.mp3
+save ~/.cmus/test.pl
+add ~/Music/Raptor.mp3
+kill-session
+exit
+close
+wq
+add /Volumes/Songs/Musique/Songs/Soundtracks/
+add /Volumes/Songs/Musique/Songs/Compilations/
+add /Volumes/Songs/Musique/Songs/Artists/
+add /Volumes/Songs/Musique/Songs/Compilations/Soundtracks
+add /Volumes/Songs/Musique/Songs/
+aq
+set softvol=true
+rc
+add ~/music
+live-filter 
+load Playlists/Remote/Good.pl
+save Playlists/Remote/Good.pl
+save
+load ~/.cmus/good.pl
+load good
+load good.pl
+factivate
+fdeactivate
+fset myst=album="*myst*|*riven*"
+factivate myst
+Album=Myst
+set follow=false
+load Programming.m3u
+q
+kkkkk
+load ~/Desktop/Soundtracks.m3u
+clear
+save ~/test.txt
+export ~/test
+set follow=true
+add -p Soundtracks.m3u
+add -p
+add Soundtracks.m3u
+add Soundtracks
+help
+add /Volumes/Songs/
+add /Volumes/Songs
+tmux attach -d
+colorscheme molokai-like
+bind -f common o win-activate
+src
+d
+das
+w
+dasdsa
+dsadsa
+colorscheme default
+kill
+q:q

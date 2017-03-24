@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/cabouffard-dynamo/src/recode/.bundle/ruby/2.3.0/gems/prismic.io-1.3.3'
+let g:netrw_dirhist_2='/Users/cabouffard-dynamo/src/recode/.bundle/ruby/2.3.0/gems/prismic.io-1.3.3/lib'
+let g:netrw_dirhist_3='/Users/cabouffard-dynamo/src/recode/.bundle/ruby/2.3.0/gems/prismic.io-1.3.3/lib/prismic'
+let g:netrw_dirhist_4='/Users/cabouffard-dynamo/src/data_warehouse_prototype/.git'
+let g:netrw_dirhist_5='/opt/rubies/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/solidus_retail-3d1f1448704f'
+let g:netrw_dirhist_6='/opt/rubies/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/solidus_retail-6efbbc55b3e8'
+let g:netrw_dirhist_7='/opt/rubies/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/solidus_retail-3d1f1448704f'
+let g:netrw_dirhist_8='/opt/rubies/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/solidus_retail-3d1f1448704f/app'
+let g:netrw_dirhist_9='/opt/rubies/2.3.1/lib/ruby/gems/2.3.0/bundler/gems/solidus_retail-964cf3ce15b7'

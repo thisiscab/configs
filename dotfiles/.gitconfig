@@ -1,0 +1,21 @@
+[github]
+    user = cabouffard
+[user]
+    email = cabouffard@gmail.com
+    name = Charles-Andre Bouffard
+[push]
+    default = simple
+[pull]
+    rebase = true
+[branch]
+    autosetuprebase = always
+[core]
+    autocrlf = false
+[color]
+    ui = true
+[format]
+    pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
+[hub]
+    protocol = https
+[commit]
+    template = "$HOME/.git_commit_msg.txt"
