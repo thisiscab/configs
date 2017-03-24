@@ -1,22 +1,4 @@
-#!/usr/bin/env bash
-
-git pull origin master;
-
-HOMEBREW_PREFIX="/usr/local"
-DOTFILES_ROOT=$(pwd -P)
-
-if [ -d "$HOMEBREW_PREFIX" ]; then
-  if ! [ -r "$HOMEBREW_PREFIX" ]; then
-    sudo chown -R "$LOGNAME:admin" /usr/local
-  fi
-else
-  sudo mkdir "$HOMEBREW_PREFIX"
-  sudo chflags norestricted "$HOMEBREW_PREFIX"
-  sudo chown -R "$LOGNAME:admin" "$HOMEBREW_PREFIX"
-fi
-
-cd "$(dirname "$0")/.."
-set -e
+#!/usr/bin/env sh
 
 function setUp() {
     setShell
@@ -25,9 +7,8 @@ function setUp() {
 
     setBrew
     setGem
-    setCask
     setRuby
-    setBrew
+    setCask
 }
 
 function setShell() {
@@ -116,11 +97,10 @@ function setCask() {
     brew cask install iterm2
     brew cask install macvim
     brew cask install spotify
-    brew cask install pgadmin3
-    brew cask install screenhero
-    brew cask install java
+    # brew cask install messenger # -- only personnal
+    # brew cask install screenhero # -- only for work
     # brew cask install cloud # cloudApp -- only for work
-    brew cask install virtualbox
+    # brew cask install virtualbox -- only for work
     # brew cask install karabiner # -- only for work
 }
 
@@ -145,20 +125,6 @@ update_shell() {
   fi
   chsh -s "$shell_path"
 }
-
-function setCask() {
-    brew cask install alfred
-    brew cask install vlc
-    brew cask install google-chrome
-    brew cask install slack
-    brew cask install spectacle
-    brew cask install iterm2
-    brew cask install macvim
-    brew cask install spotify
-    # brew cask install screenhero # work
-    brew cask install java
-}
-
 
 function setDotFiles() {
     if [ "$1" == "--force" -o "$1" == "-f" ]; then
@@ -196,10 +162,11 @@ function configureVim() {
         vim +PluginInstall +qall
         cd  ~/.vim/bundle/YouCompleteMe
         ./install.sh
+}
 
 # Helpers
 
-linkFile () {
+function linkFile () {
   local src=$1 dst=$2
 
   local overwrite= backup= skip=
@@ -277,26 +244,26 @@ linkFile () {
 
 # Prints
 
-fancy_echo() {
+function fancy_echo() {
   local fmt="$1"; shift
 
   # shellcheck disable=SC2059
   printf "\n$fmt\n" "$@"
 }
 
-info () {
+function info () {
   printf "\r  [ \033[00;34m..\033[0m ] $1\n"
 }
 
-user () {
+function user () {
   printf "\r  [ \033[0;33m??\033[0m ] $1\n"
 }
 
-success () {
+function success () {
   printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
 }
 
-fail () {
+function fail () {
   printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
   echo ''
   exit
@@ -304,7 +271,7 @@ fail () {
 
 # Brew stuff
 
-brew_install_or_upgrade() {
+function brew_install_or_upgrade() {
   if brew_is_installed "$1"; then
     if brew_is_upgradable "$1"; then
       fancy_echo "Upgrading %s ..." "$1"
@@ -318,27 +285,27 @@ brew_install_or_upgrade() {
   fi
 }
 
-brew_is_installed() {
+function brew_is_installed() {
   local name="$(brew_expand_alias "$1")"
 
   brew list -1 | grep -Fqx "$name"
 }
 
-brew_is_upgradable() {
+function brew_is_upgradable() {
   local name="$(brew_expand_alias "$1")"
 
   ! brew outdated --quiet "$name" >/dev/null
 }
 
-brew_tap() {
+function brew_tap() {
   brew tap "$1" 2> /dev/null
 }
 
-brew_expand_alias() {
+function brew_expand_alias() {
   brew info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}'
 }
 
-brew_launchctl_restart() {
+function brew_launchctl_restart() {
   local name="$(brew_expand_alias "$1")"
   local domain="homebrew.mxcl.$name"
   local plist="$domain.plist"
@@ -355,7 +322,7 @@ brew_launchctl_restart() {
 
 # Ruby stuff
 
-gem_install_or_update() {
+function gem_install_or_update() {
   if gem list "$1" --installed > /dev/null; then
     gem update "$@"
   else
@@ -363,3 +330,27 @@ gem_install_or_update() {
     rbenv rehash
   fi
 }
+
+sudo -v
+
+while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+git pull origin master;
+
+HOMEBREW_PREFIX="/usr/local"
+DOTFILES_ROOT=$(pwd -P)
+
+if [ -d "$HOMEBREW_PREFIX" ]; then
+  if ! [ -r "$HOMEBREW_PREFIX" ]; then
+    sudo chown -R "$LOGNAME:admin" /usr/local
+  fi
+else
+  sudo mkdir "$HOMEBREW_PREFIX"
+  sudo chflags norestricted "$HOMEBREW_PREFIX"
+  sudo chown -R "$LOGNAME:admin" "$HOMEBREW_PREFIX"
+fi
+
+cd "$(dirname "$0")/.."
+set -e
+
+setUp
