@@ -42,9 +42,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # eval "$(phantomenv init -)"
 fi
 
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
+# if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+#   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+# fi
 
 # source $ZSH/oh-my-zsh.sh
 # source $ZSH/plugins/fasd/fasd.plugin.zsh
