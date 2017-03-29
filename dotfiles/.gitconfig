@@ -18,4 +18,4 @@
 [hub]
     protocol = https
 [commit]
-    template = "$HOME/.git_commit_msg.txt"
+    template = ~/.git_commit_msg.txt
