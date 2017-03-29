@@ -5,9 +5,9 @@ function setUp() {
 
     setDotFiles
 
+    setRuby
     setBrew
     setGem
-    setRuby
     setCask
 }
 
@@ -146,7 +146,7 @@ function linkFiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '.*' -not -path '*.git*')
+  for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '.*' -not -path '*.git')
   do
     dst="$HOME/$(basename "${src}")"
     linkFile "$src" "$dst"
@@ -339,6 +339,11 @@ git pull origin master;
 
 HOMEBREW_PREFIX="/usr/local"
 DOTFILES_ROOT=$(pwd -P)
+
+if ! command -v brew >/dev/null; then
+    fancy_echo "Installing Homebrew ..."
+    curl -fsS 'https://raw.githubusercontent.com/Homebrew/install/master/install' | ruby
+fi
 
 if [ -d "$HOMEBREW_PREFIX" ]; then
   if ! [ -r "$HOMEBREW_PREFIX" ]; then
