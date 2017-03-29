@@ -97,11 +97,11 @@ function setCask() {
     brew cask install iterm2
     brew cask install macvim
     brew cask install spotify
-    # brew cask install messenger # -- only personnal
-    # brew cask install screenhero # -- only for work
-    # brew cask install cloud # cloudApp -- only for work
-    # brew cask install virtualbox -- only for work
-    # brew cask install karabiner # -- only for work
+    brew cask install screenhero 
+    brew cask install cloud # cloudApp 
+    brew cask install navicat-for-postgresql
+    brew cask install virtualbox
+    brew cask install karabiner
 }
 
 function setGem() {
