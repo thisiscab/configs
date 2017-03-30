@@ -11,6 +11,7 @@
     autosetuprebase = always
 [core]
     autocrlf = false
+	excludesfile = ~/.gitignore
 [color]
     ui = true
 [format]

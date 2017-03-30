@@ -39,6 +39,15 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH=$GOPATH/bin:$PATH
     export PATH=$HOME/Library/Haskell/bin:$PATH
     export PATH="$HOME/.phantomenv/bin:$PATH"
+
+    ## startup virtualenv-burrito
+    if [ -f $HOME/.venvburrito/startup.sh ]; then
+        . $HOME/.venvburrito/startup.sh
+    fi
+
+    ## startup rbenv
+    eval "$(rbenv init -)"
+
     # eval "$(phantomenv init -)"
 fi
 
@@ -54,4 +63,3 @@ source $HOME/.functions
 
 # How to correctly install npm on Mac OS
 # https://gist.github.com/DanHerbert/9520689
-eval "$(rbenv init -)"
