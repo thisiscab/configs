@@ -54,3 +54,4 @@ source $HOME/.functions
 
 # How to correctly install npm on Mac OS
 # https://gist.github.com/DanHerbert/9520689
+eval "$(rbenv init -)"
