@@ -55,8 +55,8 @@ function setBrew() {
     brew "reattach-to-user-namespace"
     brew "the_silver_searcher"
     brew "tmux"
-    brew "vim"
     brew "zsh"
+    brew "macvim" --with-python3
 
     # Heroku
     brew "heroku-toolbelt"
@@ -67,6 +67,9 @@ function setBrew() {
 
     # Image manipulation
     brew "imagemagick"
+
+    # Python
+    brew "python3"
 
     # Testing
     brew "qt"
@@ -95,13 +98,7 @@ function setCask() {
     brew cask install slack
     brew cask install spectacle
     brew cask install iterm2
-    brew cask install macvim
     brew cask install spotify
-    # brew cask install messenger # -- only personnal
-    # brew cask install screenhero # -- only for work
-    # brew cask install cloud # cloudApp -- only for work
-    # brew cask install virtualbox -- only for work
-    # brew cask install karabiner # -- only for work
 }
 
 function setGem() {
