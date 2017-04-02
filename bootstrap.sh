@@ -80,6 +80,9 @@ function setBrew() {
     brew "rbenv"
     brew "ruby-build"
 
+    # Managements
+    brew "direnv"
+
     # Databases
     brew "postgres", restart_service: true
     brew "redis", restart_service: true

@@ -48,6 +48,9 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     ## startup rbenv
     eval "$(rbenv init -)"
 
+    ## startup direnv
+    eval "$(direnv hook zsh)"
+
     # eval "$(phantomenv init -)"
 fi
 
@@ -60,6 +63,18 @@ fi
 
 source $HOME/.aliases
 source $HOME/.functions
+#
+# Antigen stuff
+source $HOME/src/antigen/antigen.zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle kennethreitz/autoenv
+antigen bundle git
+antigen bundle pip
+antigen bundle pip
+antigen bundle clvv/fasd fasd
+# antigen theme arrow
+antigen apply
+
 
 # How to correctly install npm on Mac OS
 # https://gist.github.com/DanHerbert/9520689
