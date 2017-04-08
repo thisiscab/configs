@@ -23,4 +23,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias dk="cd $HOME/Desktop"
     alias doc="cd $HOME/Documents/My\ Documents"
     alias mux="tmuxinator"
+
+    # Work stuff
+    alias cdw="ssh -i ~/.ssh/id_rsa data@ec2-54-174-202-186.compute-1.amazonaws.com"
 fi
+

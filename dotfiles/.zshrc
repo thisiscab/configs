@@ -67,11 +67,20 @@ source $HOME/.functions
 # Antigen stuff
 source $HOME/src/antigen/antigen.zsh
 antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle kennethreitz/autoenv
 antigen bundle git
+antigen bundle caarlos0/zsh-open-pr
+antigen bundle brew
+# antigen bundle brew-cask
+antigen bundle osx
+antigen bundle gem
 antigen bundle pip
-antigen bundle pip
-antigen bundle clvv/fasd fasd
+antigen bundle python
+antigen bundle virtualenv
+antigen bundle tmuxinator
+antigen bundle fasd
+
 # antigen theme arrow
 antigen apply
 
