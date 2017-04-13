@@ -11,20 +11,37 @@ alias myip="dig +short myip.opendns.com @resolver1.opendns.com"
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # Ruby
     alias rclean="rdd && rdc && rdm && rds"
+
     # General
-    alias srcv="source ~/.vimrc"
+    alias svim="source ~/.vimrc"
+    alias szsh="source ~/.zshrc"
+    alias salias="source ~/.aliases"
+    alias evim="$EDITOR ~/.vimrc"
+    alias ezsh="$EDITOR ~/.zshrc"
+    alias ealias="$EDITOR ~/.aliases"
     alias vim="mvim -v"
     alias v="vim"
-    alias vf="vim $HOME/.vimrc"
     alias y="youtube-dl"
     alias please='sudo $(fc -ln -1)'
+    alias getip="curl -s http://wtfismyip.com/text"
+
     # Directory Navigation
-    alias dl="cd $HOME/Downloads"
-    alias dk="cd $HOME/Desktop"
-    alias doc="cd $HOME/Documents/My\ Documents"
+    alias dl="cd ~/Downloads"
+    alias dk="cd ~/Desktop"
+    alias doc="cd ~/Documents"
     alias mux="tmuxinator"
 
-    # Work stuff
-    alias cdw="ssh -i ~/.ssh/id_rsa data@ec2-54-174-202-186.compute-1.amazonaws.com"
-fi
+    # Stuff
+    alias dud='du -d 1 -h'
+    alias duf='du -sh *'
 
+    # dir stack
+    alias dh='dirs -v'
+
+    # Other navigation stuff
+    alias ..='cd ..'
+    alias ...='cd ../..'
+
+    # Work stuff
+    alias cdw="ssh -i ~/.ssh/id_rsa cab@ec2-54-174-202-186.compute-1.amazonaws.com"
+fi

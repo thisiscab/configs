@@ -233,7 +233,7 @@ set shell=bash\ -i
     map Q <Nop>
 
     " Search word under the cusor with Ag
-    nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
+    nmap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " ----- Fugitive -----
     nnoremap <silent> <leader>gs :Gstatus<CR>
