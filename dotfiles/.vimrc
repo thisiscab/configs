@@ -233,7 +233,7 @@ set shell=bash\ -i
     map Q <Nop>
 
     " Search word under the cusor with Ag
-    nmap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
+    nnoremap K :Ag! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " ----- Fugitive -----
     nnoremap <silent> <leader>gs :Gstatus<CR>
@@ -249,7 +249,7 @@ set shell=bash\ -i
     nmap <leader>fr :CtrlP<CR>
     nmap <leader>f :CtrlP .<CR>
     " Search from all opened buffers
-    nmap <leader>b :CtrlPBuffer<CR>
+    nmap <leader>sb :CtrlPBuffer<CR>
 
 " ----- Tab Navigation -----
     " nnoremap <C-h> <C-w>h
@@ -258,10 +258,10 @@ set shell=bash\ -i
     " nnoremap <C-l> <C-w>l
 
 " ----- Split Resize -----
-    nnoremap <C-J> :vertical resize -5<cr>
+    " nnoremap <C-J> :vertical resize -5<cr>
     nnoremap <C-K> :resize +5<cr>
     nnoremap <C-L> :resize -5<cr>
-    nnoremap <C-H> :vertical resize +5<cr>
+    " nnoremap <C-H> :vertical resize +5<cr>
 
 " ----- Buffer Navigation -----
     " To open a new empty buffer
@@ -280,7 +280,7 @@ set shell=bash\ -i
     nmap <leader>q :tab close<CR>
 
 " ----- Search and Replace -----
-    nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+    nnoremap <Leader>snr :%s/\<<C-r><C-w>\>//g<Left><Left>
 
 " ----- UltiSnips -----
     let g:UltiSnipsExpandTrigger = "<tab>"
@@ -406,7 +406,18 @@ nmap <leader>fn :echo expand('%:p')<cr>
 " Convert 1.8 hash syntax to 1.9 syntax
 nmap <leader>r9 :%s/:\([^ ]*\)\(\s*\)=>/\1:/gc<cr>
 nmap <leader>r8 :%s/\(\w\+\):\s/:\1 => /gc<cr>"
-nmap <leader>sf :Ag<space>
+nmap <leader>sfs :Ag<space>
+
+" DW
+nnoremap <leader>sjs :DBJobStop
+let g:dbext_default_profile_dwpsql = 'type=PGSQL:host=cruncher-test.csi15pteagfe.us-east-1.redshift.amazonaws.com:port=5439:dbname=cruncher_production:user=crunchermaster'
+let g:dbext_default_profile = 'dwpsql'
+" autocmd VimEnter * DBCompleteTables
+augroup dw 
+    au! 
+    " Automatically choose the correct dbext profile 
+    autocmd BufRead */src/data_warehouse/* DBSetOption profile=dwpsql
+augroup end 
 
 " Lets you go to the next block with %
 runtime macros/matchit.vim
@@ -475,6 +486,7 @@ Bundle 'rhysd/vim-crystal'
 Bundle 'NLKNguyen/papercolor-theme'
 Bundle 'python-mode/python-mode'
 Plugin 'posva/vim-vue'
+Plugin 'jonathanfilip/vim-dbext'
 
 " Have to stay at the bottom, else everything screws up!
 syntax on                   " syntax highlighting on

@@ -38,6 +38,15 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     export PATH=$HOME/Library/Haskell/bin:$PATH
     export PATH="$HOME/.phantomenv/bin:$PATH"
 
+    # Source: https://superuser.com/a/767491
+    # export TIMEFMT='%J   %U  user %S system %P cpu %*E total'$'\n'\
+    #                 'avg shared (code):         %X KB'$'\n'\
+    #                 'avg unshared (data/stack): %D KB'$'\n'\
+    #                 'total (sum):               %K KB'$'\n'\
+    #                 'max memory:                %M MB'$'\n'\
+    #                 'page faults from disk:     %F'$'\n'\
+    #                 'other page faults:         %R'
+
     ## startup virtualenv-burrito
     if [ -f $HOME/.venvburrito/startup.sh ]; then
         . $HOME/.venvburrito/startup.sh
@@ -105,7 +114,6 @@ antigen bundle brew
 antigen bundle osx
 antigen bundle gem
 antigen bundle pip
-antigen bundle gibo
 antigen bundle python
 antigen bundle virtualenv
 antigen bundle tmuxinator

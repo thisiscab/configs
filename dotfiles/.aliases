@@ -19,21 +19,29 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias evim="$EDITOR ~/.vimrc"
     alias ezsh="$EDITOR ~/.zshrc"
     alias ealias="$EDITOR ~/.aliases"
+    alias etodo="$EDITOR ~/notes/todo.md"
+    alias todo="etodo"
+    alias etmp="$EDITOR ~/notes/scratch.md"
     alias vim="mvim -v"
     alias v="vim"
     alias y="youtube-dl"
     alias please='sudo $(fc -ln -1)'
     alias getip="curl -s http://wtfismyip.com/text"
+    alias myip="getip"
+    alias p3="python3"
 
     # Directory Navigation
     alias dl="cd ~/Downloads"
     alias dk="cd ~/Desktop"
     alias doc="cd ~/Documents"
-    alias mux="tmuxinator"
+    alias config="cd ~/src/configs"
 
     # Stuff
     alias dud='du -d 1 -h'
     alias duf='du -sh *'
+
+    # Brew
+    alias brewn="HOMEBREW_NO_AUTO_UPDATE=1 brew"
 
     # dir stack
     alias dh='dirs -v'
@@ -43,5 +51,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias ...='cd ../..'
 
     # Work stuff
-    alias cdw="ssh -i ~/.ssh/id_rsa cab@ec2-54-174-202-186.compute-1.amazonaws.com"
+    alias dwssh="ssh -i ~/.ssh/id_rsa cab@ec2-54-226-247-245.compute-1.amazonaws.com"
+    alias dwdb='psql -h cruncher-test.csi15pteagfe.us-east-1.redshift.amazonaws.com -U crunchermaster -d cruncher_production -p 5439'
+    alias dwpair="dwssh; sudo su-; sudo t-money; tmux attach-session -t shared"
 fi

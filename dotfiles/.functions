@@ -30,6 +30,11 @@ function pping() {
 # ############################## #
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+    function take() {
+        mkdir -p $1
+        cd $1
+    }
+
     function o() {
         if [ $# -eq 0 ]; then
             open .
