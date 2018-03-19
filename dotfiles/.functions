@@ -42,24 +42,4 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
             open "$@"
         fi
     }
-
-    function t() {
-        if [ $# -eq 2 ]; then
-            livestreamer twitch.tv/"$1" $2
-        elif [ $# -eq 1 ]; then
-            livestreamer twitch.tv/"$1" best
-        else
-            echo "USAGE: twitch twitch_id [quality]"
-        fi
-    }
-
-    function hit() {
-        if [ $# -eq 2 ]; then
-            livestreamer hitbox.tv/"$1" $2
-        elif [ $# -eq 1 ]; then
-            livestreamer hitbox.tv/"$1" best
-        else
-            echo "USAGE: hit twitch_id [quality]"
-        fi
-    }
 fi

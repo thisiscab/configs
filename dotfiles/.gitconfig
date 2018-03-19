@@ -11,7 +11,7 @@
     autosetuprebase = always
 [core]
     autocrlf = false
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
 [color]
     ui = true
 [format]
@@ -20,3 +20,9 @@
     protocol = https
 [commit]
     template = ~/.git_commit_msg.txt
+	gpgsign = false
+[merge]
+    tool = vimdiff3
+    ff = true
+[mergetool "vimdiff3"]
+    cmd = vim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"

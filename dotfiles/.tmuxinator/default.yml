@@ -1,0 +1,10 @@
+# ~/.tmuxinator/default.yml
+
+name: default
+root: ~
+
+windows:
+  - default:
+      layout: even-horizontal
+      panes:
+        -

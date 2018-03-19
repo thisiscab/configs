@@ -1,0 +1,17 @@
+snippet sel "Select statement"
+SELECT
+	${0:*}
+FROM ${1:table}
+endsnippet
+
+snippet join "Join statement"
+LEFT JOIN ${0:table} ON ${0}.${1:key} = ${2:table2.key}
+endsnippet
+
+snippet drop "Drop statement"
+DROP TABLE IF EXISTS ${0:table} ${1:CASCADE};
+endsnippet
+
+snippet w "workspace"
+{workspace}
+endsnippet

@@ -24,11 +24,16 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias etmp="$EDITOR ~/notes/scratch.md"
     alias vim="mvim -v"
     alias v="vim"
-    alias y="youtube-dl"
+    # alias y="youtube-dl"
     alias please='sudo $(fc -ln -1)'
     alias getip="curl -s http://wtfismyip.com/text"
     alias myip="getip"
     alias p3="python3"
+    alias p2="python2.7"
+    alias mux="tmuxinator"
+    alias gpr="git pr"
+
+    alias gpgkill="gpgconf --kill gpg-agent"
 
     # Directory Navigation
     alias dl="cd ~/Downloads"
@@ -53,5 +58,10 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Work stuff
     alias dwssh="ssh -i ~/.ssh/id_rsa cab@ec2-54-226-247-245.compute-1.amazonaws.com"
     alias dwdb='psql -h cruncher-test.csi15pteagfe.us-east-1.redshift.amazonaws.com -U crunchermaster -d cruncher_production -p 5439'
-    alias dwpair="dwssh; sudo su-; sudo t-money; tmux attach-session -t shared"
+    alias gloprod="cx ssh -s 'glossier-solidus-production' -e production process"
+    alias dwprod="cx ssh -s 'data-pipeline-production' -e production dockerhost"
+    alias dwprodheavy="cx ssh -s 'data-pipeline-production-heavy' -e production master"
+    alias dwstage="cx ssh -s 'data-pipeline-staging' -e staging master"
+
+    alias nd='terminal-notifier -title "Terminal" -message "Done with task!" ; say donzo;'
 fi
