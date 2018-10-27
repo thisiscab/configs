@@ -1,32 +1,13 @@
 # ~/.tmuxinator/dw.yml
 
-name: dw
+name: dw-pipeline
 root: ~/src/data_pipeline
 
 windows:
-  - dw-src:
-      pre: workon data_warehouse
+  - src:
       layout: even-horizontal
       panes:
         - vim
-        -
-
-  - dev:
-      layout: even-horizontal
-      panes:
-        -
-        -
-
-  - staging:
-      layout: even-horizontal
-      panes:
-        -
-        -
-
-  - production:
-      layout: even-horizontal
-      panes:
-        -
         -
 
   - luigi-src:
@@ -34,22 +15,10 @@ windows:
       layout: even-horizontal
       panes:
         - vim
+        -
 
   - glossier-src:
       pre: cd ~/src/glossier-v2
-      layout: even-horizontal
-      panes:
-        - vim
-        -
-
-  - glossierprod:
-      pre: cd ~/src/glossier-v2
-      layout: even-horizontal
-      panes:
-        - vim
-
-  - notes:
-      pre: cd ~/notes
       layout: even-horizontal
       panes:
         - vim
