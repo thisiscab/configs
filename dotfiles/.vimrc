@@ -234,7 +234,7 @@ call vundle#begin()
 
 Bundle 'gmarik/Vundle.vim'
 Bundle 'morhetz/gruvbox'
-Bundle 'ctrlp/ctrlp.vim'
+Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'vim-airline/vim-airline'
 Bundle 'tpope/vim-fugitive'
 " required by fugitive for :gbrowse
