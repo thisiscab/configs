@@ -9,7 +9,7 @@
 
 " ========== General Configuration ==========
     set clipboard+=unnamed
-    call matchadd('ColorColumn', '\%81v', 1)
+    set colorcolumn=80
     set synmaxcol=120
     set nocompatible
     set background=dark
