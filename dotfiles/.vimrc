@@ -173,8 +173,7 @@
     let g:UltiSnipsExpandTrigger = "<tab>"
     let g:UltiSnipsJumpForwardTrigger = "<c-n>"
     let g:UltiSnipsJumpBackwardTrigger = "<c-u>"
-    " let g:UltiSnipsSnippetsDir = "/Users/cabouffard-glossier/src/configs/UltiSnips"
-    let g:UltiSnipsSnippetDirectories = ["UltiSnips","bundle/vim-snippets/UltiSnips", "/Users/cabouffard-glossier/src/configs/UltiSnips"]
+    let g:UltiSnipsSnippetDirectories = ["UltiSnips", "bundle/vim-snippets/UltiSnips", $HOME."/src/configs/UltiSnips"]
     let g:ultisnips_python_quoting_style = 'double'
     let g:ultisnips_python_style = 'google'
     autocmd FileType python UltiSnipsAddFiletypes luigi
