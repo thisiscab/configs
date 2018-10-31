@@ -113,7 +113,7 @@
 
     " Source vimrc file from anywhere
     nnoremap <Leader>sr <ESC>:so $MYVIMRC<CR>
-    nnoremap <leader>evim :e ~/.vimrc<CR>
+    nnoremap <leader>ev :e ~/.vimrc<CR>
 
     " Easy to type exit key
     imap jj <Esc>
@@ -192,6 +192,7 @@
 
         " ----- Filetypes -----
         au FileType gitcommit setlocal spell textwidth=72
+        au FileType markdown setlocal spell
         au FileType python set foldenable
         au FileType ruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
         " au FileType crystal setlocal shiftwidth=2 softtabstop=2 tabstop=2
