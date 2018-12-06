@@ -70,9 +70,15 @@ export PATH=$HOME/bin:$PATH
 export PATH=/usr/local/bin::$PATH
 
 export EDITOR=vim
+export LANG="C"
 
 eval "$(direnv hook zsh)"
+eval "$(ssh-agent -s)"
+ssh-add -K ~/.ssh/github_rsa
+ssh-add -K ~/.ssh/motherbrain_rsa
 
 if [ "$TMUX" = "" ]; then
     tmuxinator default
 fi
+
+
