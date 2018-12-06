@@ -1,14 +1,14 @@
 #!/bin/bash
 
 function setUp() {
-    # setShell
+    setShell
 
-    # setAsdfVersionManager
-    # setGem
+    setAsdfVersionManager
+    setGem
 
-    # setPythonLibrary
-    # installCargo
-    # setAlacritty
+    setPythonLibrary
+    installCargo
+    setAlacritty
 
     setDotFiles
 }
