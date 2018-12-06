@@ -27,7 +27,7 @@ function setShell() {
 }
 
 function setPythonLibrary() {
-    pip3 install --user aws
+    pip3 install --user --upgrade awscli
 }
 
 function setAsdfVersionManager() {
