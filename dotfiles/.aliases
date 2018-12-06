@@ -63,5 +63,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias dwprodheavy="cx ssh -s 'data-pipeline-production-heavy' -e production master"
     alias dwstage="cx ssh -s 'data-pipeline-staging' -e staging master"
 
-    alias nd='terminal-notifier -title "Terminal" -message "Done with task!" ; say donzo;'
+    alias notify='terminal-notifier -title "Terminal" -message "Done with task!" ; say donzo;'
+    alias pytest='python3 -m unittest'
+
+    alias motherbrain="ssh pi@192.168.0.183 -p 666"
 fi
