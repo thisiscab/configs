@@ -7,19 +7,23 @@ windows:
   - src:
       layout: even-horizontal
       panes:
-        - vim
+        -
         -
 
   - luigi-src:
       pre: cd ~/src/glossier/luigi
       layout: even-horizontal
       panes:
-        - vim
         -
 
   - glossier-src:
       pre: cd ~/src/glossier-v2
       layout: even-horizontal
       panes:
-        - vim
+        -
+
+  - notes:
+      pre: cd ~/src/notes/glossier
+      layout: even-horizontal
+      panes:
         -
