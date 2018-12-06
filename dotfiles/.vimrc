@@ -195,6 +195,8 @@
         au FileType markdown setlocal spell
         au FileType python set foldenable
         au FileType ruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
+        au FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
+        au FileType sql setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
         " au FileType crystal setlocal shiftwidth=2 softtabstop=2 tabstop=2
         " au FileType eruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
         " au FileType haml setlocal shiftwidth=2 softtabstop=2 tabstop=2
