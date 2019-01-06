@@ -11,7 +11,7 @@ windows:
         -
 
   - luigi-src:
-      pre: cd ~/src/glossier/luigi
+      pre: cd ~/src/luigi
       layout: even-horizontal
       panes:
         -

@@ -1,0 +1,11 @@
+# ~/.tmuxinator/infra.yml
+
+name: dw-infra
+root: ~/src/streaming_pipeline_v2
+
+windows:
+  - src:
+      layout: even-horizontal
+      panes:
+        -
+        -
