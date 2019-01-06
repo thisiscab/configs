@@ -67,7 +67,9 @@ source $HOME/.asdf/asdf.sh
 export PATH=$HOME/Library/Python/3.7/bin:$PATH
 export PATH=$HOME/.cargo/bin:$PATH
 export PATH=$HOME/bin:$PATH
-export PATH=/usr/local/bin::$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/.asdf/bin:$PATH
+export PATH=$HOME/.asdf/shims:$PATH
 
 export EDITOR=vim
 export LANG="C"
@@ -81,4 +83,5 @@ if [ "$TMUX" = "" ]; then
     tmuxinator default
 fi
 
-
+# added by travis gem
+[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
