@@ -62,9 +62,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias dwprod="cx ssh -s 'data-pipeline-production' -e production dockerhost"
     alias dwprodheavy="cx ssh -s 'data-pipeline-production-heavy' -e production master"
     alias dwstage="cx ssh -s 'data-pipeline-staging' -e staging master"
+    alias dbtprod="cx ssh -s 'data-pipeline-dbt-production' -e production dockerhost"
 
     alias notify='terminal-notifier -title "Terminal" -message "Done with task!" ; say donzo;'
     alias pytest='python3 -m unittest'
 
     alias motherbrain="ssh pi@192.168.0.183 -p 666"
+    alias bfg="java -jar ~/.bin/bfg.jar"
 fi
