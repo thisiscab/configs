@@ -7,8 +7,6 @@ function setUp() {
     setGem
 
     setPythonLibrary
-    installCargo
-    setAlacritty
 
     setDotFiles
 }
@@ -57,23 +55,6 @@ function setGem() {
     gem_install_or_update 'tmuxinator'
 }
 
-function setAlacritty() {
-    if [ ! -d "$HOME/src/alacritty" ]; then
-	fancy_echo "Configuring alacritty"
-        git clone https://github.com/jwilm/alacritty.git ~/src/alacritty
-        make -C ~/src/alacritty app
-        cp -r ~/src/alacritty/target/release/osx/Alacritty.app ~/Applications/
-    fi
-}
-
-function installCargo() {
-    if ! command -v cargo >/dev/null; then
-        fancy_echo "Installing Cargo ..."
-        curl https://sh.rustup.rs -sSf | sh
-    fi
-    source $HOME/.cargo/env
-}
-
 # Shell stuff
 
 update_shell() {
@@ -86,8 +67,8 @@ function setDotFiles() {
     read -p "This may overwrite existing files in your home directory. Are you sure? (y/n) " -n 1;
     echo "";
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-	linkFiles
-	configureVim
+        linkFiles
+        configureVim
         configureMac
     fi;
 }

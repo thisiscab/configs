@@ -70,6 +70,7 @@ function setCask() {
     cask "google-backup-and-sync"
     cask "docker"
     cask "cloudapp"
+    cask "alacritty"
 EOF
 }
 
