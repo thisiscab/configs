@@ -39,11 +39,10 @@
     set listchars=tab:>-,nbsp:_,trail:- " show tabs and trailing
     set novisualbell                    " don't blink
     set number                          " turn on line numbers
-    set relativenumber                  " turn on relative line numbers
     set ruler                           " Always show current positions along the bottom
     set showcmd                         " show the command being typed
     set showmatch                       " show matching brackets
-    set showbreak=↪
+    set showbreak=~
     set listchars=tab:>-,nbsp:_,trail:- " show tabs and trailing
     set statusline=%F%m%r%h%w[%L][%{&ff}]%y[%p%%][%04l,%04v]
     "              | | | | |  |   |      |  |     |    |
