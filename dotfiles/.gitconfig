@@ -12,6 +12,7 @@
 [core]
     autocrlf = false
     excludesfile = ~/.gitignore
+    pager = less --raw-control-chars
 [color]
     ui = true
 [format]
@@ -20,7 +21,7 @@
     protocol = https
 [commit]
     template = ~/.git_commit_msg.txt
-	gpgsign = false
+    gpgsign = false
 [merge]
     tool = vimdiff3
     ff = true
