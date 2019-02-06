@@ -43,3 +43,26 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
         fi
     }
 fi
+
+# ############################## #
+#       Generic Git Aliases
+# ############################## #
+
+function git_current_branch() {
+  local ref
+  ref=$(command git symbolic-ref --quiet HEAD 2> /dev/null)
+  local ret=$?
+  if [[ $ret != 0 ]]; then
+    [[ $ret == 128 ]] && return  # no git repo.
+    ref=$(command git rev-parse --short HEAD 2> /dev/null) || return
+  fi
+  echo ${ref#refs/heads/}
+}
+
+function work_in_progress() {
+  if $(git log -n 10 2>/dev/null | grep -q -c "\-\-wip\-\-"); then
+    echo "There is a commit with WIP! Do rebase you lazy butt!"
+  else
+    echo "Commit history clean, there are no WIP commits"
+  fi
+}

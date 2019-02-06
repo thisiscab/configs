@@ -69,4 +69,77 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     alias motherbrain="ssh pi@192.168.0.183 -p 666"
     alias bfg="java -jar ~/.bin/bfg.jar"
+
+    # Docker Compose
+    alias dc='docker-compose'
+    alias dcb='docker-compose build'
+    alias dcs='docker-compose stop'
+    alias dcup='docker-compose up'
+    alias dcupd='docker-compose up -d'
+    alias dcd='docker-compose down'
+    alias dcl='docker-compose logs -f'
+
+    # Git Aliases
+    alias wip='work_in_progress'
+    alias g='git'
+
+    alias ga='git add'
+    alias gaa='git add --all'
+    alias gap='git add --patch'
+
+    alias gb='git branch'
+    alias gba='git branch -a'
+
+    alias gbs='git bisect'
+    alias gbsb='git bisect bad'
+    alias gbsg='git bisect good'
+    alias gbsr='git bisect reset'
+    alias gbss='git bisect start'
+
+    alias gc='git commit -v'
+    alias gc!='git commit -v --no-edit --amend'
+    alias gca='git commit -v -a'
+    alias gca!='git commit -v -a --no-edit --amend'
+
+    alias gcb='git checkout -b'
+    alias gcm='git checkout master'
+    alias gcd='git checkout develop'
+    alias gco='git checkout'
+
+    alias gclean='git clean -fd'
+    alias gpristine='git reset --hard && git clean -dfx'
+
+    alias gcp='git cherry-pick'
+    alias gcpa='git cherry-pick --abort'
+    alias gcpc='git cherry-pick --continue'
+
+    alias gd='git diff'
+    alias gdc='git diff --cached'
+
+    alias ggpull='git pull origin "$(git_current_branch)"'
+    alias ggpush='git push origin "$(git_current_branch)"'
+    alias ggpushf='ggpush --force-with-lease'
+    alias ggpp='ggpull && ggpush'
+
+    alias glom="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'"
+    alias gloma="git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --all"
+    alias glos='git log --oneline --decorate --graph'
+    alias glosa='git log --oneline --decorate --graph --all'
+
+    alias gr='git remote'
+    alias gra='git remote add'
+    alias grs='git remote -v'
+
+    alias grb='git rebase'
+    alias grba='git rebase --abort'
+    alias grbc='git rebase --continue'
+    alias grbi='git rebase -i'
+
+    alias grh='git reset --hard'
+    alias grs='git reset --soft'
+
+    alias gs='git status -sb'
+
+    alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
+    alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
 fi
