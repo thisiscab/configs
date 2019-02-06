@@ -52,8 +52,9 @@ setopt auto_cd
 source /usr/local/share/antigen/antigen.zsh
 
 # antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle git
-antigen bundle tmuxinator
+# antigen bundle git
+# antigen bundle tmuxinator
+antigen bundle vi-mode
 
 autoload -Uz colors && colors
 source $HOME/.zsh-theme
@@ -85,3 +86,5 @@ fi
 
 # added by travis gem
 [ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
