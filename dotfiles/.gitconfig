@@ -5,6 +5,7 @@
     name = Charles-Andre Bouffard
 [push]
     default = simple
+    followTags = true
 [pull]
     rebase = true
 [branch]
@@ -25,5 +26,8 @@
 [merge]
     tool = vimdiff3
     ff = true
+    conflictstyle = diff3
 [mergetool "vimdiff3"]
     cmd = vim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
+[status]
+    showUntrackedFiles = all
