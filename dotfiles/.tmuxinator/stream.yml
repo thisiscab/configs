@@ -1,0 +1,15 @@
+# ~/.tmuxinator/yaguara-streaming.yml
+
+name: yaguara-stream
+root: ~/src/yaguara/yaguara-streaming
+
+windows:
+  - src:
+      layout: even-horizontal
+      panes:
+        - vim
+  - services:
+      layout: even-horizontal
+      panes:
+        - cd producers/shopify && npm run server:start
+        - cd dev/kafka-services && docker-compose up

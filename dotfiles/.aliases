@@ -55,20 +55,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias ..='cd ..'
     alias ...='cd ../..'
 
-    # Work stuff
-    alias dwssh="ssh -i ~/.ssh/id_rsa cab@ec2-54-226-247-245.compute-1.amazonaws.com"
-    alias dwdb='psql -h cruncher-test.csi15pteagfe.us-east-1.redshift.amazonaws.com -U crunchermaster -d cruncher_production -p 5439'
-    alias gloprod="cx ssh -s 'glossier-solidus-production' -e production process"
-    alias dwprod="cx ssh -s 'data-pipeline-production' -e production dockerhost"
-    alias dwprodheavy="cx ssh -s 'data-pipeline-production-heavy' -e production master"
-    alias dwstage="cx ssh -s 'data-pipeline-staging' -e staging master"
-    alias dbtprod="cx ssh -s 'data-pipeline-dbt-production' -e production dockerhost"
-    alias dbtstage="cx ssh -s data-pipeline-dbt-staging 54.210.240.93"
-
     alias notify='terminal-notifier -title "Terminal" -message "Done with task!" ; say donzo;'
     alias pytest='python3 -m unittest'
 
-    alias motherbrain="ssh pi@192.168.0.183 -p 666"
+    alias motherbrain="ssh -i ~/.ssh/personal_rsa pi@192.168.0.183 -p 666"
+    # alias motherbraincp="scp -i ~/.ssh/personal_rsa -P 666 first_floor.svg pi@192.168.0.183:/home/pi/"
     alias bfg="java -jar ~/.bin/bfg.jar"
 
     # Docker Compose
@@ -143,4 +134,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
     alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
+    alias depchecka='depcheck --ignores="@types/*,typescript"'
 fi

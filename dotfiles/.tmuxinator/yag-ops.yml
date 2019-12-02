@@ -1,0 +1,13 @@
+# ~/.tmuxinator/yaguara-ops.yml
+
+name: yaguara-ops
+root: ~/src/yaguara/yaguara-devops
+
+windows:
+  - src:
+      layout: even-horizontal
+      panes:
+        - vim
+        - vim
+        - 
+        - 

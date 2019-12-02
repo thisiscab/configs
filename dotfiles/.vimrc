@@ -122,6 +122,8 @@
     nmap <silent><s-tab> <Plug>(ale_previous_wrap)
     nmap <silent><tab> <Plug>(ale_next_wrap)
 
+    let b:ale_fixers = { 'typescript': 'eslint' }
+
 " ----- Fugitive -----
     nnoremap <silent> <leader>gs :Gstatus<CR>
     nnoremap <silent> <leader>gd :Gdiff<CR>
@@ -142,6 +144,8 @@
 " ---- TMUX ----
     let g:tmux_navigator_disable_when_zoomed = 1
 
+" ---- vim-terraform ----
+    let g:terraform_fmt_on_save = 1
 
 " ----- Split Resize -----
     " nnoremap <C-J> :vertical resize -5<cr>
@@ -180,6 +184,9 @@
 " ----- indentLine -----
     " nnoremap <Leader>lt :IndentLinesToggle<CR>
 
+" ----- tsuquyomi -----
+    let g:tsuquyomi_disable_quickfix = 1
+
 " ----- lonely -----
     nmap <leader>pwd :echo expand('%:p')<cr>
     " prettify sql:
@@ -196,6 +203,7 @@
         au FileType ruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
         au FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
         au FileType sql setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
+        au FileType typescript setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
         " au FileType crystal setlocal shiftwidth=2 softtabstop=2 tabstop=2
         " au FileType eruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
         " au FileType haml setlocal shiftwidth=2 softtabstop=2 tabstop=2
@@ -233,6 +241,8 @@ set rtp+=~/.vim/bundle/vundle.vim/
 set rtp+=~/src/configs/UltiSnips
 call vundle#begin()
 
+let g:vim_markdown_conceal = 0
+
 Bundle 'gmarik/Vundle.vim'
 Bundle 'morhetz/gruvbox'
 Bundle 'ctrlpvim/ctrlp.vim'
@@ -241,7 +251,10 @@ Bundle 'tpope/vim-fugitive'
 " required by fugitive for :gbrowse
 Bundle 'tpope/vim-rhubarb'
 Bundle 'tomtom/tcomment_vim'
-Bundle 'suan/vim-instant-markdown'
+" v Must come before vim-makdown
+Bundle 'godlygeek/tabular'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'mattn/gist-vim'
 " Required for gist-vim
@@ -254,10 +267,23 @@ Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'Yggdroot/indentLine'
 " Required for easytag to work
-Bundle 'vim-python/python-syntax'
-Bundle 'davidhalter/jedi-vim'
-Plugin 'lifepillar/pgsql.vim'
-Plugin 'tpope/vim-unimpaired'
+" Bundle 'vim-python/python-syntax'
+" Bundle 'davidhalter/jedi-vim'
+" Bundle 'lifepillar/pgsql.vim'
+" Bundle 'tpope/vim-unimpaired'
+" Bundle 'Quramy/tsuquyomi'
+Bundle 'leafgarland/typescript-vim'
+Bundle 'hashivim/vim-terraform.git'
+Bundle 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+
+" Keymapping
+nnoremap <leader>p :PrettierAsync<cr>
+
+" autocmd to format on save
+" autocmd BufNewFile,BufRead *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html nnoremap <buffer> <leader>w :PrettierAsync<cr>:w!<cr>
+
 
 call vundle#end()
 
