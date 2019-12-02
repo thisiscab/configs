@@ -36,10 +36,10 @@ sudo pmset -a autopoweroff 0
 ###############################################################################
 
 # Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "unknown"
-sudo scutil --set HostName "unknown"
-sudo scutil --set LocalHostName "unknown"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "unknown"
+sudo scutil --set ComputerName "0x62696c6c2e6761746573"
+sudo scutil --set HostName "0x62696c6c2e6761746573"
+sudo scutil --set LocalHostName "0x62696c6c2e6761746573"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "0x62696c6c2e6761746573"
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
