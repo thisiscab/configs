@@ -3,6 +3,7 @@
 function setUp() {
     setBrewFormulae
     setCask
+    setGem
     configureMac
 }
 
@@ -17,9 +18,10 @@ function setBrewFormulae() {
     brew "openssl"
     brew "reattach-to-user-namespace"
     brew "the_silver_searcher"
+    brew "google-backup-and-sync"
     brew "tmux"
     brew "zsh"
-    brew "macvim", args: ['with-python3']
+    brew "macvim"
     brew "antigen"
 
     # Heroku
@@ -57,10 +59,9 @@ function setCask() {
 
     brew update --force # https://github.com/Homebrew/brew/issues/1151
     brew bundle --file=- <<EOF
-    tap "caskroom/cask"
 
     cask "alfred"
-    cask "datagrip"
+    cask "krisp"
     cask "1password"
     cask "vlc"
     cask "google-chrome"
@@ -74,8 +75,23 @@ function setCask() {
 EOF
 }
 
+function setGem() {
+    gem_install_or_update 'bundler'
+    number_of_cores=$(sysctl -n hw.ncpu)
+    bundle config --global jobs $((number_of_cores - 1))
+
+    gem_install_or_update 'tmuxinator'
+}
+
 function configureMac() {
     sh ~/src/configs/dotfiles/.macos_sudo
+}
+
+# Prints
+
+function fancy_echo() {
+  local fmt="$1"; shift
+  printf "\n$fmt\n" "$@" $1
 }
 
 HOMEBREW_PREFIX="/usr/local"
