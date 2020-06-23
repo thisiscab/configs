@@ -1,13 +1,13 @@
 #!/bin/bash
 
 function setUp() {
-    setShell
+    # setShell
 
     setAsdfVersionManager
 
-    setPythonLibrary
+    # setPythonLibrary
 
-    setDotFiles
+    # setDotFiles
 }
 
 function setShell() {
@@ -30,7 +30,7 @@ function setPythonLibrary() {
 function setAsdfVersionManager() {
     fancy_echo "Configuring asdf version manager..."
     if [ ! -d "$HOME/.asdf" ]; then
-        git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.5.0
+        git clone https://github.com/asdf-vm/asdf.git ~/.asdf
     fi
 
     source "$HOME/.asdf/asdf.sh"

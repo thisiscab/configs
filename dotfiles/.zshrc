@@ -52,7 +52,7 @@ setopt auto_cd
 source /usr/local/share/antigen/antigen.zsh
 
 # Other stuff
-source ~/.bin/tmuxinator.zsh
+# source ~/.bin/tmuxinator.zsh
 
 # antigen bundle zsh-users/zsh-history-substring-search
 # antigen bundle git
@@ -82,9 +82,9 @@ export LANG="C"
 eval "$(direnv hook zsh)"
 eval "$(ssh-agent -s)"
 ssh-add -K ~/.ssh/github_rsa
-ssh-add -K ~/.ssh/motherbrain_rsa
-ssh-add -K ~/.ssh/bitbucket_rsa
-ssh-add -K ~/.ssh/yaguara_ed25519
+# ssh-add -K ~/.ssh/motherbrain_rsa
+# ssh-add -K ~/.ssh/bitbucket_rsa
+# ssh-add -K ~/.ssh/yaguara_ed25519
 
 if [ "$TMUX" = "" ]; then
     tmuxinator default
@@ -100,6 +100,10 @@ export HOMEBREW_NO_ANALYTICS=1
 export HOMEBREW_NO_INSECURE_REDIRECT=1
 export HOMEBREW_CASK_OPTS=--require-sha
 
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
 [[ -f /Users/steve/.asdf/installs/nodejs/11.12.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/steve/.asdf/installs/nodejs/11.12.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
@@ -113,3 +117,4 @@ export HOMEBREW_CASK_OPTS=--require-sha
 # tabtab source for packages
 # uninstall by removing these lines
 [[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
+export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/

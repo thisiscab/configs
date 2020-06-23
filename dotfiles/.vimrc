@@ -16,7 +16,7 @@
     set fenc=utf-8
     set noerrorbells
     set wildmenu
-    set wildignore=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png
+    set wildignore+=*.dll,*.o,*.obj,*.bak,*.exe,*.pyc,*.jpg,*.gif,*.png,*.swp,*.so
     set splitbelow
     set splitright
     set hidden
@@ -77,8 +77,10 @@
 " ========== Plugin Configurations ==========
 "
 " ----- VimAirline -----
+    let g:airline#extensions#ale#enabled = 1
     let g:airline#extensions#tabline#enabled = 1      " Enable the list of buffers
     let g:airline#extensions#tabline#fnamemod = ':t'  " Show just the filename
+    let g:airline#extensions#tabline#formatter = 'default'
 
 " ----- Gist Vim -----
     let g:gist_clip_command = 'pbcopy'
@@ -93,12 +95,11 @@
     " custom i
     let g:ctrlp_custom_ignore = '\v[\/](node_modules\|target\|output\|bower_components\|dist)|(\.(swp\|hg\|git\|svn))$'
 
-" ----- Vim Instant Markdown -----
-    let g:instant_markdown_autostart = 0
-    let g:instant_markdown_slow = 1
+" ----- Markdown Preview -----
+    let g:mkdp_browser = 'firefox'
 
-" ---- psql ----
-    let g:sql_type_default = 'pgsql'
+" ----- Vim Markdown -----
+    let g:vim_markdown_conceal = 0
 
 " ========== Key Binding ==========
     let mapleader = " "
@@ -111,18 +112,18 @@
     nnoremap :Q <ESC>:q
 
     " Source vimrc file from anywhere
-    nnoremap <Leader>sr <ESC>:so $MYVIMRC<CR>
+    nnoremap <Leader>sv <ESC>:so $MYVIMRC<CR>
     nnoremap <leader>ev :e ~/.vimrc<CR>
 
-    " Easy to type exit key
-    imap jj <Esc>
-    imap jk <Esc>
-
 " ----- Ale -----
-    nmap <silent><s-tab> <Plug>(ale_previous_wrap)
-    nmap <silent><tab> <Plug>(ale_next_wrap)
+    let g:ale_set_balloons = 1
+    let g:ale_completion_enabled = 1
+    let g:ale_completion_tsserver_autoimport = 1
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
+    nmap <silent> <C-]> :ALEGoToDefinition<CR>
 
-    let b:ale_fixers = { 'typescript': 'eslint' }
+    let g:ale_fixers = { 'typescript': ['eslint'] }
 
 " ----- Fugitive -----
     nnoremap <silent> <leader>gs :Gstatus<CR>
@@ -135,11 +136,11 @@
 
 " ----- CtrlP -----
     " Search from the root directory
-    nmap <leader>fr :CtrlP<CR>
-    nmap <leader>f :CtrlP .<CR>
-    nmap <leader>a :CtrlPMixed<CR>
+    nmap <leader>sr :CtrlP<CR>
+    nmap <leader>sf :CtrlP .<CR>
+    nmap <leader>sa :CtrlPMixed<CR>
     " Search from all opened buffers
-    nmap <leader>b :CtrlPBuffer<CR>
+    nmap <leader>sb :CtrlPBuffer<CR>
 
 " ---- TMUX ----
     let g:tmux_navigator_disable_when_zoomed = 1
@@ -155,19 +156,21 @@
 
 " ----- Buffer Navigation -----
     " To open a new empty buffer
-    nmap <leader>t :enew<CR>
+    nmap <leader>bt :enew<CR>
     " Move to the next buffer
-    nmap <leader>l :bnext<CR>
+    " nmap <leader>l :bnext<CR>
     " Move to the previous buffer
-    nmap <leader>h :bprevious<CR>
+    " nmap <leader>h :bprevious<CR>
     " Close the current buffer and move to the previous one
     " This replicates the idea of closing a tab
-    nmap <leader>bq :bp <BAR> bd #<CR>
+    " nmap <leader>bq :bp <BAR> bd #<CR>
     " Edit previously edited buffer
-    nmap <leader>p :b#<CR>
+    nmap <leader>bp :b#<CR>
     " Show all open buffers and their status
     " nmap <leader>bs :ls<CR>
-    nmap <leader>q :tab close<CR>
+    nmap <leader>bq :tab close<CR>
+    nmap <leader>bd bdelete<CR>
+    nmap <leader>brd :call delete(expand('%')) <BAR> bdelete!<CR>
 
 " ----- Search and Replace -----
     nnoremap <Leader>snr :%s/\<<C-r><C-w>\>//g<Left><Left>
@@ -211,8 +214,8 @@
         " au FileType scss setlocal shiftwidth=2 softtabstop=2 tabstop=2
         " au FileType css setlocal shiftwidth=2 softtabstop=2 tabstop=2
         " au FileType sass setlocal shiftwidth=2 softtabstop=2 tabstop=2
-        " au FileType json setlocal shiftwidth=2 softtabstop=2 tabstop=2
-        " au FileType javascript setlocal shiftwidth=2 softtabstop=2 tabstop=2
+        au FileType json setlocal shiftwidth=2 softtabstop=2 tabstop=2
+        au FileType javascript setlocal shiftwidth=2 softtabstop=2 tabstop=2
         " au FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2
         " au FileType html setlocal shiftwidth=2 softtabstop=2 tabstop=2
         " Format options: https://github.com/plasticboy/vim-markdown/pull/70
@@ -224,7 +227,7 @@
         " Remove annoying tab character in Go
         " au FileType go setlocal noexpandtab
         " au FileType go setlocal listchars+=tab:\ \
-        " autocmd BufWritePost,FileWritePost *.go execute 'Lint' | cwindow
+        autocmd BufWritePost,FileWritePost *.go execute 'GoLint' | cwindow
     augroup END
     " autocmd QuickFixCmdPost *grep* cwindow
 
@@ -237,7 +240,7 @@
 nmap <leader>sf :Ag<space>
 
 " ========== Vundle : Plugin Manager ==========
-set rtp+=~/.vim/bundle/vundle.vim/
+set rtp+=~/.vim/bundle/Vundle.vim/
 set rtp+=~/src/configs/UltiSnips
 call vundle#begin()
 
@@ -254,7 +257,8 @@ Bundle 'tomtom/tcomment_vim'
 " v Must come before vim-makdown
 Bundle 'godlygeek/tabular'
 Bundle 'plasticboy/vim-markdown'
-Bundle 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Bundle 'iamcco/markdown-preview.nvim'
+" ^ Manually have to run: :call mkdp#util#install()
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'mattn/gist-vim'
 " Required for gist-vim
@@ -277,6 +281,7 @@ Bundle 'hashivim/vim-terraform.git'
 Bundle 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Bundle 'fatih/vim-go'
 
 " Keymapping
 nnoremap <leader>p :PrettierAsync<cr>
