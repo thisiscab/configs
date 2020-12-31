@@ -1,0 +1,31 @@
+{
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.messageDelay": 500,
+  "diagnostic.refreshAfterSave": false,
+  "diagnostic-languageserver.filetypes": {
+    "javascript": "eslint",
+    "vue": "eslint"
+  },
+  "diagnostic-languageserver.linters": {
+    "eslint": {
+      "command": "./node_modules/.bin/eslint",
+      "rootPatterns": [".git", "package.json"],
+      "debounce": 100,
+      "args": ["--stdin", "--stdin-filename", "%filepath", "--format", "json"],
+      "sourceName": "eslint",
+      "parseJson": {
+        "errorsRoot": "[0].messages",
+        "line": "line",
+        "column": "column",
+        "endLine": "endLine",
+        "endColumn": "endColumn",
+        "message": "${message} [${ruleId}]",
+        "security": "severity"
+      },
+      "securities": {
+        "2": "error",
+        "1": "warning"
+      }
+    }
+  }
+}
