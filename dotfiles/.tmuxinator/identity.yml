@@ -1,0 +1,18 @@
+# ~/.tmuxinator/identity.yml
+
+name: identity
+root: ~/src/identity/website
+
+windows:
+  - front-end:
+      layout: tiled
+      root: ~/src/identity/website/src/packages/front-end
+      panes:
+        -
+        - yarn start
+        -
+
+  - main:
+      layout: even-horizontal
+      panes:
+        -

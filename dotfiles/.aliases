@@ -14,7 +14,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     # General
     alias svim="source ~/.vimrc"
-    alias szsh="source ~/.zshrc"
+    alias szsh="exec zsh"
     alias salias="source ~/.aliases"
     alias evim="$EDITOR ~/.vimrc"
     alias ezsh="$EDITOR ~/.zshrc"
@@ -32,6 +32,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias p2="python2.7"
     alias mux="tmuxinator"
     alias gpr="git pr"
+    alias unpushed="sh ~/bin/git-branch-status.sh -amv"
 
     alias gpgkill="gpgconf --kill gpg-agent"
 
@@ -110,6 +111,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
     alias ggpull='git pull origin "$(git_current_branch)"'
     alias ggpush='git push origin "$(git_current_branch)"'
+
     alias ggpushf='ggpush --force-with-lease'
     alias ggpp='ggpull && ggpush'
 

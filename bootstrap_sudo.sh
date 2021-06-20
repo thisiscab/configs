@@ -3,7 +3,6 @@
 function setUp() {
     setBrewFormulae
     setCask
-    setGem
     configureMac
 }
 
@@ -18,17 +17,10 @@ function setBrewFormulae() {
     brew "openssl"
     brew "reattach-to-user-namespace"
     brew "the_silver_searcher"
-    brew "google-backup-and-sync"
     brew "tmux"
     brew "zsh"
     brew "macvim"
-    brew "antigen"
-
-    # Heroku
-    brew "heroku"
-
-    # GitHub
-    brew "hub"
+    brew "tmuxinator"
 
     # Python
     brew "python3"
@@ -43,12 +35,8 @@ function setBrewFormulae() {
     brew "gpg2"
 
     # Databases
-    brew "postgres", restart_service: :changed
+    # brew "postgres", restart_service: :changed
 EOF
-
-    fancy_echo "Update heroku binary..."
-    brew unlink heroku
-    brew link --force heroku
 }
 
 function setCask() {
@@ -61,26 +49,16 @@ function setCask() {
     brew bundle --file=- <<EOF
 
     cask "alfred"
-    cask "krisp"
     cask "1password"
     cask "vlc"
-    cask "google-chrome"
-    cask "slack"
+    cask "tor"
     cask "spectacle"
-    cask "spotify"
-    cask "google-backup-and-sync"
     cask "docker"
-    cask "cloudapp"
     cask "alacritty"
+    cask "little-snitch"
+    cask "micro-snitch"
+    cask "expressvpn"
 EOF
-}
-
-function setGem() {
-    gem_install_or_update 'bundler'
-    number_of_cores=$(sysctl -n hw.ncpu)
-    bundle config --global jobs $((number_of_cores - 1))
-
-    gem_install_or_update 'tmuxinator'
 }
 
 function configureMac() {

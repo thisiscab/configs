@@ -1,5 +1,33 @@
 # Script to benchmark speed:
 # for i in $(seq 1 10); do /usr/bin/time zsh -i -c exit; done
+#
+
+export GPG_TTY=$(tty)
+export DIRSTACKSIZE=8
+export HISTSIZE=1000               # number of lines kept in history
+export SAVEHIST=1000               # number of lines saved in the history after logout
+export HISTFILE=~/.zsh_history     # location of history
+
+export PATH=$HOME/Library/Python/3.7/bin:$PATH
+export PATH=$HOME/Library/Python/3.9/bin:$PATH
+export PATH=$HOME/.cargo/bin:$PATH
+export PATH=$HOME/bin:$PATH
+export PATH=/usr/local/bin:$PATH
+export PATH=$HOME/.asdf/bin:$PATH
+export PATH=$HOME/.asdf/shims:$PATH
+
+export EDITOR=vim
+export LANG="C"
+
+export HOMEBREW_NO_ANALYTICS=1
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_CASK_OPTS=--require-sha
+
+export GOPATH="${HOME}/.go"
+export GOROOT="/usr/local/opt/go/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 zmodload zsh/complist
 DISABLE_AUTO_TITLE=true
@@ -10,11 +38,6 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 bindkey '^k' up-line-or-history
 bindkey '^j' down-line-or-history
 
-export GPG_TTY=$(tty)
-export DIRSTACKSIZE=8
-export HISTSIZE=1000               # number of lines kept in history
-export SAVEHIST=1000               # number of lines saved in the history after logout
-export HISTFILE=~/.zsh_history     # location of history
 setopt inc_append_history          # append command to history file once executed
 setopt histignoredups
 setopt histreduceblanks
@@ -49,72 +72,28 @@ setopt auto_resume
 setopt auto_cd
 
 # Antigen stuff
-source /usr/local/share/antigen/antigen.zsh
+# source /usr/local/share/antigen/antigen.zsh
 
 # Other stuff
 # source ~/.bin/tmuxinator.zsh
-
-# antigen bundle zsh-users/zsh-history-substring-search
-# antigen bundle git
+#
+# # antigen bundle zsh-users/zsh-history-substring-search
+# # antigen bundle git
 # antigen bundle tmuxinator
-antigen bundle vi-mode
-
+# antigen bundle vi-mode
+#
 autoload -Uz colors && colors
 source $HOME/.zsh-theme
-
-antigen apply
 
 source $HOME/.aliases
 source $HOME/.aliases.private
 source $HOME/.functions
 source $HOME/.asdf/asdf.sh
 
-export PATH=$HOME/Library/Python/3.7/bin:$PATH
-export PATH=$HOME/.cargo/bin:$PATH
-export PATH=$HOME/bin:$PATH
-export PATH=/usr/local/bin:$PATH
-export PATH=$HOME/.asdf/bin:$PATH
-export PATH=$HOME/.asdf/shims:$PATH
-
-export EDITOR=vim
-export LANG="C"
+# antigen apply
 
 eval "$(direnv hook zsh)"
-eval "$(ssh-agent -s)"
-ssh-add -K ~/.ssh/github_rsa
-# ssh-add -K ~/.ssh/motherbrain_rsa
-# ssh-add -K ~/.ssh/bitbucket_rsa
-# ssh-add -K ~/.ssh/yaguara_ed25519
 
 if [ "$TMUX" = "" ]; then
-    tmuxinator default
+  tmuxinator default
 fi
-
-# added by travis gem
-[ -f $HOME/.travis/travis.sh ] && source $HOME/.travis/travis.sh
-
-export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
-export HUSKY_SKIP_HOOKS=1
-
-export HOMEBREW_NO_ANALYTICS=1
-export HOMEBREW_NO_INSECURE_REDIRECT=1
-export HOMEBREW_CASK_OPTS=--require-sha
-
-export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/steve/.asdf/installs/nodejs/11.12.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/steve/.asdf/installs/nodejs/11.12.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/steve/.asdf/installs/nodejs/11.12.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/steve/.asdf/installs/nodejs/11.12.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
-# tabtab source for slss package
-# uninstall by removing these lines or running `tabtab uninstall slss`
-[[ -f /Users/steve/.asdf/installs/nodejs/11.12.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh ]] && . /Users/steve/.asdf/installs/nodejs/11.12.0/.npm/lib/node_modules/serverless/node_modules/tabtab/.completions/slss.zsh
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/__tabtab.zsh ]] && . ~/.config/tabtab/__tabtab.zsh || true
-export LIBRARY_PATH=$LIBRARY_PATH:/usr/local/opt/openssl/lib/

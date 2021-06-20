@@ -2,8 +2,23 @@
 #       Generic Aliases
 # ############################## #
 
-# `pping` with no arguments ping the IP 8.8.8.8 (usefull for basic internet connection test), 
-# otherwise ping the given IP. If the IP is incomplete, it is concat with the default 
+timezsh() {
+  shell=${1-$SHELL}
+  for i in $(seq 1 10); do /usr/bin/time $shell -i -c exit; done
+}
+
+sshauth() {
+  # Only one SSH agent per login
+  if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+  eval "$(ssh-agent -s)"
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+  fi
+  export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+  ssh-add -K ~/.ssh/github_rsa > /dev/null
+}
+
+# `pping` with no arguments ping the IP 8.8.8.8 (usefull for basic internet connection test),
+# otherwise ping the given IP. If the IP is incomplete, it is concat with the default
 # prefix 192.168.1 allowing easy local ping (eg ping 3.12 => 192.168.3.12)
 function pping() {
         ip4regex='^[0-9]+[.][0-9]+[.][0-9]+[.][0-9]+$'
@@ -65,9 +80,4 @@ function work_in_progress() {
   else
     echo "Commit history clean, there are no WIP commits"
   fi
-}
-
-
-function t() {
-    streamlink twitch.tv/$1 ${2-best}
 }
