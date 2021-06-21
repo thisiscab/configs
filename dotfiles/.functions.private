@@ -1,0 +1,13 @@
+sshauth() {
+  # Only one SSH agent per login
+  if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+  eval "$(ssh-agent -s)"
+    ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+  fi
+  export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+  ssh-add -K ~/.ssh/github_rsa > /dev/null
+  /* ssh-add -K ~/.ssh/bitbucket_rsa > /dev/null */
+  /* ssh-add -K ~/.ssh/yaguara_ed25519 > /dev/null */
+  ssh-add -K ~/.ssh/github_rsa > /dev/null
+  ssh-add -K ~/.ssh/gitlab_rsa > /dev/null
+}

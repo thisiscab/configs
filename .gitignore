@@ -2,7 +2,6 @@
 ## src: https://github.com/github/gitignore/blob/master/Global/Vim.gitignore
 
 # Swap
-[._]*.s[a-v][a-z]
 [._]*.sw[a-p]
 [._]s[a-rt-v][a-z]
 [._]ss[a-gi-z]
@@ -14,11 +13,8 @@ Sessionx.vim
 
 # Temporary
 .netrwhist
-*~
 # Auto-generated tag files
 tags
-# Persistent undo
-[._]*.un~
 
 ### /VIM
 #

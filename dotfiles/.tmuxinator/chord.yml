@@ -1,0 +1,50 @@
+name: chord
+root:
+
+pre_window: direnv allow
+
+windows:
+  - dbt:
+      root: ~/src/chord/dbt
+      layout: main-vertical
+      pre: cd dbt
+      panes:
+        - 
+        - make restart-daemon
+        - make shell-pipeline
+        - make shell-docs
+  - dbt-extractor:
+      root: ~/src/chord/dbt-extractor
+      layout: main-vertical
+      panes:
+        -
+        - yarn test:unit:watch
+        - yarn lint
+  - superset-dbt-importer:
+      root: ~/src/chord/superset-dbt
+      layout: main-vertical
+      panes:
+        -
+        -
+        - yarn lint
+  - superset-local:
+      root: ~/src/superset
+      layout: main-vertical
+      panes:
+        -
+        -
+        - docker-compose -f docker-compose-non-dev.yml up
+  - devops:
+      root: ~/src/yaguara/devops
+      layout: main-vertical
+      panes:
+        -
+        -
+        -
+  - yaguara:
+      root: ~/src/yaguara/main-app
+      layout: main-vertical
+      panes:
+        -
+        -
+        -

@@ -74,6 +74,11 @@
     set nofoldenable                                 " No autofold
     set foldmethod=indent
 
+
+" ========== Other ==========
+    set noeol
+    set nofixeol
+
 " ========== Plugin Configurations ==========
 "
 " ----- VimAirline -----
@@ -116,14 +121,10 @@
     nnoremap <leader>ev :e ~/.vimrc<CR>
 
 " ----- Ale -----
-    let g:ale_set_balloons = 1
-    let g:ale_completion_enabled = 1
-    let g:ale_completion_tsserver_autoimport = 1
-    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-    nmap <silent> <C-j> <Plug>(ale_next_wrap)
-    nmap <silent> <C-]> :ALEGoToDefinition<CR>
+    " nmap <silent><s-tab> <Plug>(ale_previous_wrap)
+    " nmap <silent><tab> <Plug>(ale_next_wrap)
 
-    let g:ale_fixers = { 'typescript': ['eslint'] }
+    " let b:ale_fixers = { 'typescript': 'eslint' }
 
 " ----- Fugitive -----
     nnoremap <silent> <leader>gs :Gstatus<CR>
@@ -195,17 +196,47 @@
     " prettify sql:
     vnoremap <Leader>sql :s/\<update\>\\|\<select\>\\|\<from\>\\|\<where>\\|\<left join\>\\|\<inner join\>\\|\<group by\>\\|\<order by\>/\r\U&/ge<cr><esc>
 
+" --- vim-hclmt ---
+let g:hcl_fmt_autosave = 1
+let g:tf_fmt_autosave = 0
+let g:nomad_fmt_autosave = 0
+
+" ----- json -----
+let g:vim_json_syntax_conceal = 0 
+
+" ----- coc -----
+map <silent> <leader>td <Plug>(coc-definition)
+nmap <silent> <leader>tt <Plug>(coc-type-definition)
+nmap <silent> <leader>th :call CocActionAsync('doHover')<cr>
+nmap <silent> <leader>to :call CocAction('runCommand', 'editor.action.organizeImport')<cr>
+nmap <silent> <leader>ti <Plug>(coc-implementation)
+nmap <silent> <leader>tr <Plug>(coc-references)"
+
+let g:coc_global_extensions = [
+    \ 'coc-tsserver',
+    \ 'coc-json',
+    \ 'coc-go',
+    \ 'coc-html',
+    \ 'coc-css',
+    \ 'coc-eslint'
+    \ ]
+
+nmap <silent><s-tab> <Plug>(coc-diagnostic-prev)
+nmap <silent><tab> <Plug>(coc-diagnostic-next)
+
 " ========== Autocommands ==========
+    autocmd BufNewFile,BufRead *.json set ft=json
+
     augroup EditVim
         autocmd!
 
         " ----- Filetypes -----
         au FileType gitcommit setlocal spell textwidth=72
-        au FileType markdown setlocal spell
+        au FileType markdown setlocal spell shiftwidth=2 softtabstop=2 tabstop=2
         au FileType python set foldenable
         au FileType ruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
         au FileType yaml setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
-        au FileType sql setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
+        au FileType sql setlocal shiftwidth=4 softtabstop=4 tabstop=4 expandtab
         au FileType typescript setlocal shiftwidth=2 softtabstop=2 tabstop=2 expandtab
         " au FileType crystal setlocal shiftwidth=2 softtabstop=2 tabstop=2
         " au FileType eruby setlocal shiftwidth=2 softtabstop=2 tabstop=2
@@ -231,7 +262,6 @@
     augroup END
     " autocmd QuickFixCmdPost *grep* cwindow
 
-
 " ===== RAIL SHORTCUTS  =====
 " https://gist.github.com/christoomey/9357451"
 " Convert 1.8 hash syntax to 1.9 syntax
@@ -247,6 +277,7 @@ call vundle#begin()
 let g:vim_markdown_conceal = 0
 
 Bundle 'gmarik/Vundle.vim'
+Bundle 'neoclide/coc.nvim'
 Bundle 'morhetz/gruvbox'
 Bundle 'ctrlpvim/ctrlp.vim'
 Bundle 'vim-airline/vim-airline'
@@ -276,12 +307,17 @@ Bundle 'Yggdroot/indentLine'
 " Bundle 'lifepillar/pgsql.vim'
 " Bundle 'tpope/vim-unimpaired'
 " Bundle 'Quramy/tsuquyomi'
-Bundle 'leafgarland/typescript-vim'
+" Bundle 'leafgarland/typescript-vim'
 Bundle 'hashivim/vim-terraform.git'
+Bundle 'jvirtanen/vim-hcl.git'
+" Bundle 'fatih/vim-hclfmt'
+Bundle 'rhadley-recurly/vim-terragrunt'
 Bundle 'prettier/vim-prettier', {
   \ 'do': 'yarn install',
   \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 Bundle 'fatih/vim-go'
+Bundle 'elzr/vim-json'
+Bundle 'chrisbra/csv.vim'
 
 " Keymapping
 nnoremap <leader>p :PrettierAsync<cr>
@@ -291,7 +327,6 @@ nnoremap <leader>p :PrettierAsync<cr>
 
 
 call vundle#end()
-
 
 " Have to stay at the bottom, else everything screws up!
 syntax on                   " syntax highlighting on

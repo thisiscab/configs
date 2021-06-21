@@ -3,6 +3,7 @@
 [user]
     email = cabouffard@gmail.com
     name = Charles-Andre Bouffard
+    signingkey = EF833962CB06A482
 [push]
     default = simple
     followTags = true
@@ -24,10 +25,14 @@
     template = ~/.git_commit_msg.txt
     gpgsign = false
 [merge]
-    tool = vimdiff3
+    tool = vimdiff
     ff = true
     conflictstyle = diff3
 [mergetool "vimdiff3"]
     cmd = vim -f -d \"$LOCAL\" \"$MERGED\" \"$REMOTE\"
 [status]
     showUntrackedFiles = all
+[difftool]
+    prompt = false
+[diff]
+    tool = vimdiff

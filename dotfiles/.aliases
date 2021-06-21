@@ -30,6 +30,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias myip="getip"
     alias p3="python3"
     alias p2="python2.7"
+    alias muxt="TMUX= tmuxinator"
     alias mux="tmuxinator"
     alias gpr="git pr"
     alias unpushed="sh ~/bin/git-branch-status.sh -amv"
@@ -137,4 +138,6 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commit --no-verify -m "--wip-- [skip ci]"'
     alias gunwip='git log -n 1 | grep -q -c "\-\-wip\-\-" && git reset HEAD~1'
     alias depchecka='depcheck --ignores="@types/*,typescript"'
+
+    alias cleardns="dscacheutil -flushcache"
 fi

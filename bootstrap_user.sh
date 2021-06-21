@@ -3,7 +3,7 @@
 function setUp() {
     # setShell
 
-    setAsdfVersionManager
+    # setAsdfVersionManager
 
     # setPythonLibrary
 
@@ -198,6 +198,8 @@ install_asdf_language() {
   local version
   version="$(asdf list-all "$language" | grep -v "[a-z]" | tail -1)"
 
+  echo $language
+  echo $version
   if ! asdf list "$language" | grep -Fq "$version"; then
     asdf install "$language" "$version"
     asdf global "$language" "$version"

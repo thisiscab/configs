@@ -1,6 +1,5 @@
 # Script to benchmark speed:
 # for i in $(seq 1 10); do /usr/bin/time zsh -i -c exit; done
-#
 
 export GPG_TTY=$(tty)
 export DIRSTACKSIZE=8
@@ -49,7 +48,7 @@ zstyle ':completion:*' completer _complete _match _approximate
 zstyle ':completion:*:match:*' original only
 zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
-zstyle ':completion:*:cd:*' ignore-parents parent pwd # cd will never select the parent directory (e.g.: cd ../<TAB>)
+zstyle ':completion::cd:' ignore-parents parent pwd # cd will never select the parent directory (e.g.: cd ../<TAB>)
 
 zstyle ':completion:*' menu select=2 # Highly selection in menu if nb items > 2
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Ignore case
@@ -81,13 +80,14 @@ setopt auto_cd
 # # antigen bundle git
 # antigen bundle tmuxinator
 # antigen bundle vi-mode
-#
+
 autoload -Uz colors && colors
 source $HOME/.zsh-theme
 
 source $HOME/.aliases
 source $HOME/.aliases.private
 source $HOME/.functions
+source $HOME/.functions.private
 source $HOME/.asdf/asdf.sh
 
 # antigen apply
