@@ -6,45 +6,82 @@ pre_window: direnv allow
 windows:
   - dbt:
       root: ~/src/chord/dbt
-      layout: main-vertical
+      layout: 36d1,273x74,0,0{160x74,0,0,1,112x74,161,0[112x24,161,0,11,112x23,161,25,12,112x25,161,49,13]}
       pre: cd dbt
       panes:
-        - 
-        - make restart-daemon
+        -
+        -
         - make shell-pipeline
         - make shell-docs
+  - dbt-shopify:
+      root: ~/src/chord/dbt-packages/dbt_shopify
+      layout: 36d1,273x74,0,0{160x74,0,0,1,112x74,161,0[112x24,161,0,11,112x23,161,25,12,112x25,161,49,13]}
+      panes:
+        -
+        -
+        -
+        -
+  - dbt-solidus:
+      root: ~/src/chord/dbt-packages/dbt_solidus
+      layout: 36d1,273x74,0,0{160x74,0,0,1,112x74,161,0[112x24,161,0,11,112x23,161,25,12,112x25,161,49,13]}
+      panes:
+        -
+        -
+        -
+        -
   - dbt-extractor:
       root: ~/src/chord/dbt-extractor
-      layout: main-vertical
+      layout: 36d1,273x74,0,0{160x74,0,0,1,112x74,161,0[112x24,161,0,11,112x23,161,25,12,112x25,161,49,13]}
       panes:
         -
         - yarn test:unit:watch
         - yarn lint
+        -
   - superset-dbt-importer:
       root: ~/src/chord/superset-dbt
-      layout: main-vertical
+      layout: 36d1,273x74,0,0{160x74,0,0,1,112x74,161,0[112x24,161,0,11,112x23,161,25,12,112x25,161,49,13]}
       panes:
         -
         -
         - yarn lint
+        -
   - superset-local:
       root: ~/src/superset
-      layout: main-vertical
+      layout: 36d1,273x74,0,0{160x74,0,0,1,112x74,161,0[112x24,161,0,11,112x23,161,25,12,112x25,161,49,13]}
       panes:
-        -
         -
         - docker-compose -f docker-compose-non-dev.yml up
+        -
+        -
   - devops:
       root: ~/src/yaguara/devops
-      layout: main-vertical
+      layout: 36d1,273x74,0,0{160x74,0,0,1,112x74,161,0[112x24,161,0,11,112x23,161,25,12,112x25,161,49,13]}
       panes:
+        -
         -
         -
         -
   - yaguara:
       root: ~/src/yaguara/main-app
-      layout: main-vertical
+      layout: 36d1,273x74,0,0{160x74,0,0,1,112x74,161,0[112x24,161,0,11,112x23,161,25,12,112x25,161,49,13]}
       panes:
+        -
+        -
+        -
+        -
+  - dbt-date:
+      root: ~/src/chord/dbt-packages/dbt_date
+      layout: 36d1,273x74,0,0{160x74,0,0,1,112x74,161,0[112x24,161,0,11,112x23,161,25,12,112x25,161,49,13]}
+      panes:
+        -
+        -
+        -
+        -
+  - dbt-utils:
+      root: ~/src/chord/dbt-packages/dbt_utils
+      layout: 36d1,273x74,0,0{160x74,0,0,1,112x74,161,0[112x24,161,0,11,112x23,161,25,12,112x25,161,49,13]}
+      panes:
+        -
         -
         -
         -
