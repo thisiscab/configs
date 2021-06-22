@@ -3,7 +3,7 @@
 [user]
     email = cabouffard@gmail.com
     name = Charles-Andre Bouffard
-    signingkey = EF833962CB06A482
+    signingkey = 1162A03ABA4A3217
 [push]
     default = simple
     followTags = true
@@ -23,7 +23,7 @@
     protocol = https
 [commit]
     template = ~/.git_commit_msg.txt
-    gpgsign = false
+    gpgsign = true
 [merge]
     tool = vimdiff
     ff = true
