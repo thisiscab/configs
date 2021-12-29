@@ -23,7 +23,7 @@
     protocol = https
 [commit]
     template = ~/.git_commit_msg.txt
-    gpgsign = true
+    gpgsign = false
 [merge]
     tool = vimdiff
     ff = true

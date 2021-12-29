@@ -7,7 +7,7 @@ function setUp() {
 
     # setPythonLibrary
 
-    # setDotFiles
+    setDotFiles
 }
 
 function setShell() {

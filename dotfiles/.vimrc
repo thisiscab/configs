@@ -217,9 +217,10 @@ let g:coc_global_extensions = [
     \ 'coc-json',
     \ 'coc-go',
     \ 'coc-html',
-    \ 'coc-css',
-    \ 'coc-eslint'
+    \ 'coc-css'
     \ ]
+
+    " \ 'coc-eslint'
 
 nmap <silent><s-tab> <Plug>(coc-diagnostic-prev)
 nmap <silent><tab> <Plug>(coc-diagnostic-next)
